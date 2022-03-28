@@ -17,6 +17,10 @@ Install React Router v6
 ```bash
 npm install react-router-dom@6
 ```
+or
+```bash
+npm install react-router-dom@latest
+```
 
 **In your index.js set up your Browser Router**
 *Same way you do in React Router 5*
