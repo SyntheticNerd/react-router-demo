@@ -17,7 +17,7 @@ Install React Router v6
 **In your index.js set up your Browser Router**
 *Same way you do in React Router 5*
 
-```javascript
+```jsx
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
@@ -42,7 +42,7 @@ Set up the Routes in our index.js
 Import `Routes` and `Route` from `"react-router-dom"`
 Now your import looks like:
 
-```javascript
+```jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 ```
 
@@ -52,7 +52,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 - Element takes a callback that returns JSX so our components go directly in there.
 
-```javascript
+```jsx
 <Router>
   <Routes>
     <Route path='/' element={<App />} />
@@ -63,7 +63,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 Now we have access to /portfolio but no link to get to it we can make a link inside our App.js component the same way we do in React Router 5
 
-```javascript
+```jsx
 import { Link } from "react-router-dom";
 ...
    <Link to='/'>Home</Link>
@@ -78,7 +78,7 @@ If we click on Portfolio it takes us to a completely new screen without any Comp
 
 In order to get a similar effect as 5 where the elements in App persist we need to nest any dynamically rendered Route in the Route for our App
 
-```javascript
+```jsx
 <Router>
   <Routes>
     <Route path='/' element={<App />}>
@@ -92,7 +92,7 @@ When we do that the portfolio link will no longer work because even though now t
 
 For this React Router gives us a component called `<Outlet />` we can put the outlet somewhere in out App.js to specify where we would like our content to load.
 
-```javascript
+```jsx
 import { Link, Outlet } from "react-router-dom";
 ...
    <Link to='/'>Home</Link>
