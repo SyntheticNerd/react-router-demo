@@ -2,6 +2,7 @@ Wednesday 3/30 React-router v6 Live Demo
 `npm install react-router-dom@6`
 
 **In your index.js set up your Browser Router**
+*Same way you do in React Router 5*
 
 ```javascript
 import { BrowserRouter as Router } from "react-router-dom";
@@ -21,9 +22,9 @@ ReactDOM.render(
 Make a config or routes folder and create a component like Portfolio.js inside
 
 Set up the Routes in our index.js
-==**(differences start here)**==
+**(differences start here)**
 
-Instead of switch we use **Route==s==** and will be used in our Index.js
+- Instead of switch we use **Routes** and it will be used in our Index.js instead of a separate file.
 
 Import `Routes` and `Route` from `"react-router-dom"`
 Now your import looks like:
@@ -34,7 +35,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 `Routes` is nested in `Browser Router` and every `Route` will be nested in `Routes`
 
-`Route` is similar in react Router 6 as it is in 5 the key difference is instead of component we use ==**element**==.
+`Route` is similar in react Router 6 as it is in 5 the key difference is instead of component we use **element**.
 
 - Element takes a callback that returns JSX so our components go directly in there.
 
