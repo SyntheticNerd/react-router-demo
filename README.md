@@ -105,3 +105,4 @@ import { Link, Outlet } from "react-router-dom";
 ...
    <Outlet />
 ```
+[Click Here to See Original Doc](https://docs.google.com/document/d/1dX9Gz9ohRPi9nonCuOHXT2NPygop_u7ehjoovhB2hi8/edit?usp=sharing)
