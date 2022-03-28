@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+Wednesday 3/30 React-router v6 Live Demo
+`npm install react-router-dom@6`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**In your index.js set up your Browser Router**
 
-## Available Scripts
+```javascript
+import { BrowserRouter as Router } from "react-router-dom";
 
-In the project directory, you can run:
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
 
-### `npm start`
+> _Wrapping the App component in the Browser Router lets us control it from inside the App component or any components inside the Browser Router_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Make a config or routes folder and create a component like Portfolio.js inside
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Set up the Routes in our index.js
+==**(differences start here)**==
 
-### `npm test`
+Instead of switch we use **Route==s==** and will be used in our Index.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Import `Routes` and `Route` from `"react-router-dom"`
+Now your import looks like:
 
-### `npm run build`
+```javascript
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`Routes` is nested in `Browser Router` and every `Route` will be nested in `Routes`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`Route` is similar in react Router 6 as it is in 5 the key difference is instead of component we use ==**element**==.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Element takes a callback that returns JSX so our components go directly in there.
 
-### `npm run eject`
+```javascript
+<Router>
+  <Routes>
+    <Route path='/' element={<App />} />
+    <Route path='/portfolio' element={<Portfolio />} />
+  </Routes>
+</Router>
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Now we have access to /portfolio but no link to get to it we can make a link inside our App.js component the same way we do in React Router 5
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+import { Link } from "react-router-dom";
+...
+   <Link to='/'>Home</Link>
+...
+   <Link to='/portfolio'>Portfolio</Link>
+...
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If we click on Portfolio it takes us to a completely new screen without any Components from the App being rendered.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+###Introducing NESTED ROUTES and OUTLET
 
-## Learn More
+In order to get a similar effect as 5 where the elements in App persist we need to nest any dynamically rendered Route in the Route for our App
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```javascript
+<Router>
+  <Routes>
+    <Route path='/' element={<App />}>
+      <Route path='/portfolio' element={<Portfolio />} />
+    </Route>
+  </Routes>
+</Router>
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When we do that the portfolio link will no longer work because even though now the router knows the Portfolio is rendered inside the App it still does not know where to go.
 
-### Code Splitting
+For this React Router gives us a component called `<Outlet />` we can put the outlet somewhere in out App.js to specify where we would like our content to load.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```javascript
+import { Link, Outlet } from "react-router-dom";
+...
+   <Link to='/'>Home</Link>
+...
+   <Link to='/portfolio'>Portfolio</Link>
+...
+   <Outlet />
+```
