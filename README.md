@@ -1,18 +1,22 @@
 To use this as a frame work for future projects
 ```bash
 git clone https://github.com/SyntheticDesigner/react-router-demo.git
-...
+```
+```bash
 cd react-router-demo
-...
+```
+```bash
 npm install
-...
+```
+```bash
 npm start
 ```
-
 ~~Wednesday 3/30 React-router v6 Live Demo~~
 
 Install React Router v6
-`npm install react-router-dom@6`
+```bash
+npm install react-router-dom@6
+```
 
 **In your index.js set up your Browser Router**
 *Same way you do in React Router 5*
